@@ -1,0 +1,9 @@
+type Book @model {
+   id: ID!
+   bookId: ID
+   name: String!
+   category: String!
+   description: String
+   price: Float!
+ }
+

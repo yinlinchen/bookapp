@@ -1,0 +1,41 @@
+{
+    "paths": [
+        {
+            "name": "/items",
+            "lambdaFunction": "amplifyrestapifunction",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            }
+        }
+    ],
+    "resourceName": "amplifyrestapi",
+    "apiName": "amplifyrestapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "amplifyrestapifunction"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-bookapp2-dev-193932-authRole",
+        "unAuthRoleName": "amplify-bookapp2-dev-193932-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "amplifyrestapifunction",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
