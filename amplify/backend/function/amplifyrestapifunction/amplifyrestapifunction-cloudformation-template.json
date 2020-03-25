@@ -62,7 +62,7 @@
 				"Runtime": "nodejs10.x",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "amplify-bookapp2-dev-193932-deployment",
+					"S3Bucket": "amplify-bookapp2-devone-200957-deployment",
 					"S3Key": "amplify-builds/amplifyrestapifunction-426f7958645a4c4b4363-build.zip"
 				}
 			}
