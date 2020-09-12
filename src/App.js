@@ -139,7 +139,7 @@
  <button onClick={() => getMessageData()}>
  	Show message
  </button>
- <br/>
+ <br/><br/>
      </div>
    );
  }
