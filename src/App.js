@@ -140,6 +140,7 @@
  	Show message
  </button>
  <br/>
+ <br/>
      </div>
    );
  }
