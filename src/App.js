@@ -135,7 +135,7 @@
 
 	<br/>
 	    This is the message from REST API: {message}
- <br/>
+ <br/><br/>
  <button onClick={() => getMessageData()}>
  	Show message
  </button>
