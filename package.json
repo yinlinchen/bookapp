@@ -6,12 +6,12 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "aws-amplify": "^2.2.6",
-    "aws-amplify-react": "^3.1.7",
-    "mocha": "^7.1.0",
+    "aws-amplify": "^2.2.7",
+    "aws-amplify-react": "^3.1.8",
+    "mocha": "^8.1.0",
     "mochawesome": "^4.1.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-scripts": "^3.4.3",
     "uuid": "^7.0.2"
   },
@@ -37,6 +37,6 @@
     ]
   },
   "devDependencies": {
-    "cypress": "4.0.2"
+    "cypress": "^4.11.0"
   }
 }

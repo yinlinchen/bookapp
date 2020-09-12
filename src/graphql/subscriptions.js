@@ -10,6 +10,8 @@ export const onCreateBook = /* GraphQL */ `
       category
       description
       price
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -22,6 +24,8 @@ export const onUpdateBook = /* GraphQL */ `
       category
       description
       price
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -34,6 +38,8 @@ export const onDeleteBook = /* GraphQL */ `
       category
       description
       price
+      createdAt
+      updatedAt
     }
   }
 `;

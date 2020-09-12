@@ -10,6 +10,8 @@ export const getBook = /* GraphQL */ `
       category
       description
       price
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -27,6 +29,8 @@ export const listBooks = /* GraphQL */ `
         category
         description
         price
+        createdAt
+        updatedAt
       }
       nextToken
     }
