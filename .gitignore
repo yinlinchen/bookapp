@@ -37,4 +37,4 @@ amplifyconfiguration.json
 amplify-gradle-config.json
 amplifyxc.config
 
-team-provider-info.json
+#team-provider-info.json
