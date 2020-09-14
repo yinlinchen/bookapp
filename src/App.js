@@ -132,7 +132,9 @@
            </div>
          ))
        }
-
+  <br/>
+       See the amplify preview link in the pull request comment
+  <br/>
 	<br/>
 	    This is the message from REST API: {message}
  <br/><br/>
