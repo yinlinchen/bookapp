@@ -134,7 +134,7 @@
        }
 
 	<br/><br/>
-	    This is the message from REST API: {message}
+	    This is the message from REST API Demo: {message}
  <br/><br/>
  <button onClick={() => getMessageData()}>
  	Show message
@@ -144,4 +144,5 @@
    );
  }
 
- export default withAuthenticator(App, { includeGreetings: true })
+ export default App
+//  export default withAuthenticator(App, { includeGreetings: true })
