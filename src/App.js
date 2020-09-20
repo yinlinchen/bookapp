@@ -134,7 +134,7 @@
        }
 
 	<br/><br/>
-	    This is the message from REST API: {message}
+	    This is the message from test7 REST API: {message}
  <br/><br/>
  <button onClick={() => getMessageData()}>
  	Show message
