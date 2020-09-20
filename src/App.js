@@ -133,7 +133,7 @@
          ))
        }
 
-	<br/>
+	<br/>test
 	    This is the message from REST API: {message}
  <br/><br/>
  <button onClick={() => getMessageData()}>
