@@ -1,3 +1,6 @@
+const USERNAME = "code4lib";
+const PASSWORD = Cypress.env('password');
+
 describe('Authenticator:', function() {
    // Step 1: setup the application state
    beforeEach(function() {
@@ -7,12 +10,12 @@ describe('Authenticator:', function() {
    describe('Sign In:', () => {
      it('allows a user to signin', () => {
        // Step 2: Take an action (Sign in)
-       cy.get(selectors.usernameInput).type("code4lib");
-       cy.get(selectors.signInPasswordInput).type("workshop");
+       cy.get(selectors.usernameInput).type(USERNAME);
+       cy.get(selectors.signInPasswordInput).type(PASSWORD);
        cy.get(selectors.signInSignInButton).contains('Sign In').click();
 
        // Step 3: Make an assertion (Check for sign-out text)
-         cy.get(selectors.signOutButton).contains('Sign Out');
+       cy.get(selectors.signOutButton).contains('Sign Out').click();
      });
    });
 
