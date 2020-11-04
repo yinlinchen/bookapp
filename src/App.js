@@ -137,7 +137,7 @@
 	    This is the message from REST API: {message}
  <br/><br/>
  <button onClick={() => getMessageData()}>
- 	Show message
+ 	Show message test
  </button>
  <br/>
      </div>
