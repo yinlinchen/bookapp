@@ -1,9 +1,9 @@
-type Book @model {
-   id: ID!
-   bookId: ID
-   name: String!
-   category: String!
-   description: String
-   price: Float!
- }
-
+type Book @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  bookId: ID
+  name: String!
+  category: String!
+  description: String
+  price: Float!
+}
+ 
