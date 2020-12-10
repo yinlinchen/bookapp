@@ -1,4 +1,4 @@
-type Book @model {
+type Book @model @auth(rules: [{allow: public}]) {
   id: ID!
   bookId: ID
   name: String!
@@ -6,3 +6,4 @@ type Book @model {
   description: String
   price: Float!
 }
+ 
