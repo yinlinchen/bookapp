@@ -766,6 +766,10 @@
         "ApiName": {
           "Description": "API Friendly name",
           "Value": "amplifyrestapi"
+        },
+        "ApiId": {
+          "Description": "API ID (prefix of API URL)",
+          "Value": {"Ref": "amplifyrestapi"}
         }
     }
   }

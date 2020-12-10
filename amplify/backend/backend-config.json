@@ -1,6 +1,6 @@
 {
   "auth": {
-    "bookapp2a3408f76": {
+    "bookapp87b13d3e": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -13,18 +13,14 @@
       "providerPlugin": "awscloudformation",
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AWS_IAM"
-            }
-          ],
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "api key description"
+              "apiKeyExpirationDays": 360,
+              "description": "BookGraphQL"
             }
-          }
+          },
+          "additionalAuthenticationProviders": []
         }
       }
     },
@@ -45,9 +41,9 @@
   },
   "function": {
     "amplifyrestapifunction": {
-      "service": "Lambda",
+      "build": true,
       "providerPlugin": "awscloudformation",
-      "build": true
+      "service": "Lambda"
     }
   }
 }

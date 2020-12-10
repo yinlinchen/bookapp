@@ -12,7 +12,8 @@
                     "/PATCH",
                     "/DELETE"
                 ]
-            }
+            },
+            "policyResourceName": "/items"
         }
     ],
     "resourceName": "amplifyrestapi",
@@ -25,8 +26,8 @@
     "privacy": {
         "auth": 1,
         "unauth": 0,
-        "authRoleName": "amplify-bookapp2-dev-193932-authRole",
-        "unAuthRoleName": "amplify-bookapp2-dev-193932-unauthRole"
+        "authRoleName": "amplify-bookapp-dev-170435-authRole",
+        "unAuthRoleName": "amplify-bookapp-dev-170435-unauthRole"
     },
     "dependsOn": [
         {

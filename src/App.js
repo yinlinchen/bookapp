@@ -1,99 +1,95 @@
- import React, { useEffect, useReducer, useState }  from 'react'
- import { Auth, API, graphqlOperation } from 'aws-amplify'
- import './App.css';
+import React, { useEffect, useReducer, useState }  from 'react'
+import { Auth, API, graphqlOperation } from 'aws-amplify'
+import { withAuthenticator } from 'aws-amplify-react'
 
- import { withAuthenticator } from 'aws-amplify-react'
+// import query
+import { listBooks } from './graphql/queries'
+import { createBook as CreateBook } from './graphql/mutations'
+import { v4 as uuid } from 'uuid'
+import './App.css';
 
- // import query
- import { listBooks } from './graphql/queries'
+const BOOK_ID = uuid()
 
- import { createBook as CreateBook } from './graphql/mutations'
+// create initial state
+const initialState = {
+  name: '', price: '', category: '', description: '', books: []
+}
 
- import uuid from 'uuid/v4'
+// create reducer to update state
+function reducer(state, action) {
+  switch(action.type) {
+    case 'SETBOOKS':
+      return { ...state, books: action.books }
+    case 'SETINPUT':
+      return { ...state, [action.key]: action.value }
+    default:
+      return state
+  }
+}
 
- const BOOK_ID = uuid()
+function App() {
+  useEffect(() => {
+    Auth.currentAuthenticatedUser()
+      .then(user => console.log({ user }))
+      .catch(error => console.log({ error }))
+  })
 
- // create initial state
- const initialState = {
-   name: '', price: '', category: '', description: '', books: []
- }
-
- // create reducer to update state
- function reducer(state, action) {
-   switch(action.type) {
-     case 'SETBOOKS':
-       return { ...state, books: action.books }
-     case 'SETINPUT':
-       return { ...state, [action.key]: action.value }
-     default:
-       return state
-   }
- }
-
-
- function App() {
-   useEffect(() => {
-     Auth.currentAuthenticatedUser()
-       .then(user => console.log({ user }))
-       .catch(error => console.log({ error }))
-   })
-
-   const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState)
 
    useEffect(() => {
      getData()
    }, [])
 
    async function getData() {
-     try {
-       const bookData = await API.graphql(graphqlOperation(listBooks))
-       console.log('data from API: ', bookData)
-       dispatch({ type: 'SETBOOKS', books: bookData.data.listBooks.items})
-     } catch (err) {
-       console.log('error fetching data..', err)
-     }
-   }
+    try {
+      const bookData = await API.graphql(graphqlOperation(listBooks))
+      console.log('data from API: ', bookData)
+      dispatch({ type: 'SETBOOKS', books: bookData.data.listBooks.items})
+    } catch (err) {
+      console.log('error fetching data..', err)
+    }
+  }
 
-   async function createBook() {
-     const { name, price, category, description } = state
-     if (name === '' || price === '' || category === '' || description === '') return
-     const book = {
-       name, price: parseFloat(price), category, description, bookId: BOOK_ID
-     }
-     const books = [...state.books, book]
-     dispatch({ type: 'SETBOOKS', books })
-     console.log('book:', book)
-     
-     try {
-       await API.graphql(graphqlOperation(CreateBook, { input: book }))
-       console.log('item created!')
-     } catch (err) {
-       console.log('error creating book...', err)
-     }
-   }
+  async function createBook() {
+    const { name, price, category, description } = state
+    if (name === '' || price === '' || category === '' || description === '') return
+    const book = {
+      name, price: parseFloat(price), category, description, bookId: BOOK_ID
+    }
+    const books = [...state.books, book]
+    dispatch({ type: 'SETBOOKS', books })
+    console.log('book:', book)
+    
+    try {
+      await API.graphql(graphqlOperation(CreateBook, { input: book }))
+      console.log('item created!')
+    } catch (err) {
+      console.log('error creating book...', err)
+    }
+  }
 
-   // change state then user types into input
-   function onChange(e) {
-     dispatch({ type: 'SETINPUT', key: e.target.name, value: e.target.value })
-   }
+  // change state then user types into input
+  function onChange(e) {
+    dispatch({ type: 'SETINPUT', key: e.target.name, value: e.target.value })
+  }
 
-   let [message, setMessage] = useState('')
+  let [message, setMessage] = useState('')
 
- async function getMessageData() {
-     let apiName = 'amplifyrestapi';
-     let path = '/items';
-     let myInit = { // OPTIONAL
-         headers: {} // OPTIONAL
-     }
-     const apiResponse = await API.get(apiName, path, myInit);
-     setMessage(apiResponse.success)
-     console.log(apiResponse)
-     return apiResponse.success
- }
+  async function getMessageData() {
+      let apiName = 'amplifyrestapi';
+      let path = '/items';
+      let myInit = { // OPTIONAL
+          headers: {} // OPTIONAL
+      }
+      const apiResponse = await API.get(apiName, path, myInit);
+      setMessage(apiResponse.success)
+      console.log(apiResponse)
+      return apiResponse.success
+  }
 
-   return (
-     <div className="App">
-       <br/><br/>
+  return (
+    <div className="App">
+    <br/><br/>
        <input
          name='name'
          placeholder='name'
@@ -133,15 +129,15 @@
          ))
        }
 
-	<br/>Demo<br/>
-	    This is the message from REST API: {message}
- <br/><br/>
- <button onClick={() => getMessageData()}>
- 	Show message
- </button>
- <br/>
-     </div>
-   );
- }
+      <br/>Demo<br/>
+            This is the message from REST API: {message}
+      <br/><br/>
+      <button onClick={() => getMessageData()}>
+        Show message
+      </button>
+      <br/>
+    </div>
+  );
+}
 
- export default withAuthenticator(App, { includeGreetings: true })
+export default withAuthenticator(App, { includeGreetings: true })

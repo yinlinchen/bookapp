@@ -1,7 +1,12 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Lambda resource stack creation using Amplify CLI",
+  "Description": "Lambda Function resource stack creation using Amplify CLI",
   "Parameters": {
+    "CloudWatchRule": {
+      "Type": "String",
+      "Default": "NONE",
+      "Description": " Schedule Expression"
+    },
     "env": {
       "Type": "String"
     }
@@ -59,11 +64,12 @@
             "Arn"
           ]
         },
-        "Runtime": "nodejs10.x",
+        "Runtime": "nodejs12.x",
+        "Layers": [],
         "Timeout": "25",
         "Code": {
-          "S3Bucket": "amplify-bookapp2-dev-165516-deployment",
-          "S3Key": "amplify-builds/amplifyrestapifunction-426f7958645a4c4b4363-build.zip"
+          "S3Bucket": "amplify-bookapp-dev-170435-deployment",
+          "S3Key": "amplify-builds/amplifyrestapifunction-6d4b4264334d4c746159-build.zip"
         }
       }
     },
@@ -73,12 +79,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "bookapp2LambdaRole70cc3640",
+            "bookappLambdaRole3cb0e91f",
             {
               "Fn::Join": [
                 "",
                 [
-                  "bookapp2LambdaRole70cc3640",
+                  "bookappLambdaRole3cb0e91f",
                   "-",
                   {
                     "Ref": "env"
