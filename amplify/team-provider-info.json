@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-bookapp-dev-170435-unauthRole",
       "StackName": "amplify-bookapp-dev-170435",
       "StackId": "arn:aws:cloudformation:us-east-1:307821251221:stack/amplify-bookapp-dev-170435/88b26870-3a6a-11eb-96de-0e794c84352f",
-      "AmplifyAppId": "doqafuqs69ilb"
+      "AmplifyAppId": "doqafuqs69ilb",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-bookapp-dev-170435-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
